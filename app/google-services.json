@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "730343471728",
+    "firebase_url": "https://uplift2-c32f0.firebaseio.com",
+    "project_id": "uplift2-c32f0",
+    "storage_bucket": "uplift2-c32f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730343471728:android:26a3192a3f5b1a7c",
+        "android_client_info": {
+          "package_name": "com.example.uplift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730343471728-5nbccplj6nrs3h9ltiidkoukjjauq33i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uplift",
+            "certificate_hash": "006c87c54bdbd0a98cf3dd548b55975c2cd07999"
+          }
+        },
+        {
+          "client_id": "730343471728-hc2mjul1gbah16eegv1d44ms08qlu7qf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh7ny66lyKYflOx1Ut6p9OWw6Bbm7sy6M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730343471728-hc2mjul1gbah16eegv1d44ms08qlu7qf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

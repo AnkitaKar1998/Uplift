@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_home"
+        android:title="Home"
+        android:icon="@drawable/icon_home"/>
+
+    <item
+        android:id="@+id/item_private"
+        android:title="Private"
+        android:icon="@drawable/icon_company"/>
+
+    <item
+        android:id="@+id/item_ngo"
+        android:title="NGO"
+        android:icon="@drawable/icon_ngo"/>
+
+    <item
+        android:id="@+id/item_individual"
+        android:title="Individual"
+        android:icon="@drawable/icon_individual"/>
+
+</menu>

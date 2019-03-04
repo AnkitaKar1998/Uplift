@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostActivity"
+    android:background="#f2f2f2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/pname_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ProjectName"
+                android:textSize="20sp"
+                android:padding="5dp"
+                android:textColor="#000000"
+                android:layout_margin="5dp"
+                android:elevation="4dp"
+                android:background="#ffffff"/>
+
+            <TextView
+                android:id="@+id/desc_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="20sp"
+                android:padding="5dp"
+                android:textColor="#000000"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:elevation="4dp"
+                android:background="#ffffff"
+                android:lines="5"/>
+
+            <TextView
+                android:id="@+id/tv_budget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Budget"
+                android:textSize="20sp"
+                android:padding="5dp"
+                android:textColor="#000000"
+                android:layout_margin="5dp"
+                android:elevation="4dp"
+                android:background="#ffffff"/>
+
+            <TextView
+                android:id="@+id/tv_donated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="donated money"
+                android:textSize="20sp"
+                android:padding="5dp"
+                android:textColor="#000000"
+                android:layout_margin="5dp"
+                android:elevation="4dp"
+                android:background="#ffffff"/>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="4dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="1"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="Goals"
+                            android:textSize="20sp"
+                            android:textColor="#000000"
+                            android:gravity="center_vertical"
+                            android:layout_weight="0.8"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2">
+                            <ImageView
+                                android:id="@+id/prev_iv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_chevron_left_black_30dp"
+                                android:layout_weight="0.5"/>
+                            <ImageView
+                                android:id="@+id/next_iv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_chevron_right_black_30dp"
+                                android:layout_weight="0.5"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_percent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:layout_margin="5dp"
+                                android:textColor="#000000"
+                                android:text="25% completed"/>
+
+                            <ProgressBar
+                                android:id="@+id/pb"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:progress="25"
+                                style="?android:attr/progressBarStyleHorizontal" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/tv_ms_desc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="I will do this and that"
+                                android:textSize="18sp"
+                                android:padding="5dp"
+                                android:textColor="#000000"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_page_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:padding="5dp"
+                            android:text="1 of 3"
+                            android:textSize="15sp"
+                            android:textColor="#000000"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contributors"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:elevation="4dp"
+                android:background="#ffffff"/>
+
+            <Button
+                android:id="@+id/btn_donate_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Donate for the Project"
+                android:textAllCaps="false"
+                android:textSize="17sp"
+                android:padding="5dp"
+                android:background="#8AB1FC"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/chat_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_conversation"
+        android:backgroundTint="#ffffff"
+        android:layout_gravity="bottom|end"/>
+
+
+</FrameLayout>
