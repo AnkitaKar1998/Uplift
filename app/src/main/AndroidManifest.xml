@@ -14,24 +14,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PublicChatActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".DonateActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ChatActivity" android:screenOrientation="portrait" />
-        <activity android:name=".PostActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PostHistoryActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".OutsourceActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".DonationHistoryActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ProfileActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".RegisterActivity" android:screenOrientation="portrait">
+        <activity android:name=".MyChatActivity"></activity>
+        <activity android:name=".MyChatListActivity" />
+        <activity android:name=".MyPostActivity" />
+        <activity
+            android:name=".PublicChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DonateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PostHistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OutsourceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DonationHistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.paytm.pgsdk.PaytmPGActivity"
             android:configChanges="keyboardHidden|orientation|keyboard"

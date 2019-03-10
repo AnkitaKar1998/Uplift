@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class PostHistoryActivity extends AppCompatActivity {
+public class MyChatListActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     CustomRecyclerViewAdaptar adapter;
@@ -20,17 +20,16 @@ public class PostHistoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_history);
-
+        setContentView(R.layout.activity_my_chat_list);
+        context=this;
         recyclerView=(RecyclerView)findViewById(R.id.post_history_rv);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(PostHistoryActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         clickListner=new CustomRecyclerViewAdaptar.ClickListner() {
             @Override
             public void onPostClick(String pId) {
-                Intent intent=new Intent(context,MyPostActivity.class);
-                intent.putExtra("P_id",pId);
+                Intent intent=new Intent(context,MyChatActivity.class);
                 startActivity(intent);
             }
         };
