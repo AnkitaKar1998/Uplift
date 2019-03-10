@@ -47,7 +47,7 @@ public class checksum extends AppCompatActivity implements PaytmPaymentTransacti
         private ProgressDialog dialog = new ProgressDialog(checksum.this);
 
         //private String orderId , mid, custid, amt;
-        String url ="http://192.168.43.193/Paytm/generateChecksum.php";
+        String url ="http://192.168.43.192/Paytm/generateChecksum.php";
         String varifyurl = "https://pguat.paytm.com/paytmchecksum/paytmCallback.jsp";
         // "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID"+orderId;
         String CHECKSUMHASH ="";

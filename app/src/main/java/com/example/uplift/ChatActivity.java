@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,15 +29,19 @@ public class ChatActivity extends AppCompatActivity {
     LinearLayout chatSection;
     DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference();
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
     String currentUserId;
     String projectUserId;
+    String projectId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
         Intent intent = getIntent();
-        projectUserId = ((Intent) intent).getStringExtra("projectUid");
+        projectUserId = intent.getStringExtra("projectUid");
+        projectId = intent.getStringExtra("projectId");
 
         currentUserId = firebaseAuth.getCurrentUser().getUid();
 
@@ -55,15 +60,16 @@ public class ChatActivity extends AppCompatActivity {
                 setDesign(textView);
                 chatSection.addView(textView);
 
-                if((currentUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1") && projectUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2"))
-                        || (currentUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2") && projectUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1"))) {
-                    String id=mDatabase.push().getKey();
-                    mDatabase.child("chat").child("111").child(id).child("id").setValue(currentUserId);
-                    mDatabase.child("chat").child("111").child(id).child("msg").setValue(msg);
-                }
+                String msgId=mDatabase.push().getKey();
+                mDatabase.child("users").child(projectUserId).child("chat").child(projectId).child(currentUserId).child(msgId).child("id").setValue(currentUserId);
+                mDatabase.child("users").child(projectUserId).child("chat").child(projectId).child(currentUserId).child(msgId).child("msg").setValue(msg);
 
-
-
+//                if((currentUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1") && projectUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2"))
+//                        || (currentUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2") && projectUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1"))) {
+//                    String id=mDatabase.push().getKey();
+//                    mDatabase.child("chat").child("111").child(id).child("id").setValue(currentUserId);
+//                    mDatabase.child("chat").child("111").child(id).child("msg").setValue(msg);
+//                }
 //                String id=mDatabase.push().getKey();
 //                mDatabase.child("chat").child(projectUserId).child(id).setValue(msg);
 //                mDatabase.child("users").child(projectUserId).child("chat").child(currentUserId).child(id).setValue(msg);
@@ -94,34 +100,72 @@ public class ChatActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if((currentUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1") && projectUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2"))
-                || (currentUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2") && projectUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1"))) {
-            mDatabase.child("chat").child("111").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    chatSection.removeAllViews();
-                    for (DataSnapshot data: dataSnapshot.getChildren()){
-                        String msg=data.child("msg").getValue(String.class);
-                        TextView textView = new TextView(ChatActivity.this);
-                        textView.setText(msg);
-                        setDesign(textView);
-                        chatSection.addView(textView);
-                        final ScrollView scrollview = ((ScrollView) findViewById(R.id.scrollView));
-                        scrollview.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
-                            }
-                        });
-                    }
+        mDatabase.child("users").child(projectUserId).child("chat").child(projectId).child(currentUserId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                chatSection.removeAllViews();
+                for(DataSnapshot data: dataSnapshot.getChildren()) {
+                    String id = data.child("id").getValue(String.class);
+                    String msg = data.child("msg").getValue(String.class);
+                    TextView textView = new TextView(ChatActivity.this);
+                    textView.setText(msg);
+                    setDesign(textView);
+                    chatSection.addView(textView);
+                    final ScrollView scrollview = ((ScrollView) findViewById(R.id.scrollView));
+                    scrollview.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+                        }
+                    });
                 }
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
-            });
-        }
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+//        if((currentUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1") && projectUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2"))
+//                || (currentUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2") && projectUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1"))) {
+//            mDatabase.child("chat").child("111").addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    chatSection.removeAllViews();
+//                    for (DataSnapshot data: dataSnapshot.getChildren()){
+//                        String msg=data.child("msg").getValue(String.class);
+//                        TextView textView = new TextView(ChatActivity.this);
+//                        textView.setText(msg);
+//                        setDesign(textView);
+//                        chatSection.addView(textView);
+//                        final ScrollView scrollview = ((ScrollView) findViewById(R.id.scrollView));
+//                        scrollview.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+//                            }
+//                        });
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+//        }
     }
 }
 

@@ -103,9 +103,10 @@ public class PostActivity extends AppCompatActivity {
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(PostActivity.this, ChatActivity.class);
-                intent1.putExtra("projectUid", projectUserId);
-                startActivity(intent1);
+                Intent intent2 = new Intent(PostActivity.this, ChatActivity.class);
+                intent2.putExtra("projectUid", projectUserId);
+                intent2.putExtra("projectId", pid);
+                startActivity(intent2);
             }
         });
 
