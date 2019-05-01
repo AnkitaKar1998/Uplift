@@ -23,7 +23,7 @@ public class DonateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donate);
 
         Intent i = getIntent();
-//        pid = i.getStringExtra("pid");
+//        projectId = i.getStringExtra("projectId");
           cid = i.getStringExtra("cid");
 
         Random random = new Random();
@@ -39,7 +39,7 @@ public class DonateActivity extends AppCompatActivity {
                 inputAmount = amount.getEditText().getText().toString();
 
                 Intent intent = new Intent(DonateActivity.this, checksum.class);
-                intent.putExtra("pid", pid);
+                intent.putExtra("projectId", pid);
                 intent.putExtra("custid", cid);
                 intent.putExtra("amount", inputAmount);
                 startActivity(intent);

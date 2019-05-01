@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select document type: "
+        android:textSize="20sp"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"/>
+
+    <RadioGroup
+        android:id="@+id/rg_ducument_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checkedButton="@id/rb_pan">
+
+        <RadioButton
+            android:id="@+id/rb_pan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pan Card"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/rb_non_adhaar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adhaar Card"
+            android:textSize="15sp"/>
+
+
+        <RadioButton
+            android:id="@+id/rb_drive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Driving Lisence"
+            android:textSize="15sp"/>
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_document"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter document Number"/>
+
+    <Button
+        android:id="@+id/btn_proceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="PROCEED"/>
+
+</LinearLayout>

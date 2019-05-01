@@ -44,6 +44,7 @@
                     android:layout_marginRight="10dp">
 
                     <TextView
+                        android:id="@+id/tv_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Ankita Kar"
@@ -81,6 +82,7 @@
                     android:layout_marginRight="10dp">
 
                     <TextView
+                        android:id="@+id/tv_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="ankita@gmail.com"
@@ -118,6 +120,7 @@
                     android:layout_marginRight="10dp">
 
                     <TextView
+                        android:id="@+id/tv_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="1234567890"
@@ -156,6 +159,7 @@
                     android:layout_marginRight="10dp">
 
                     <TextView
+                        android:id="@+id/tv_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Individual"
@@ -186,6 +190,7 @@
                     android:layout_marginRight="10dp">
 
                     <TextView
+                        android:id="@+id/tv_kyc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="No"
@@ -203,6 +208,13 @@
                 </FrameLayout>
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_do_kyc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="do kyc"/>
 
 
 

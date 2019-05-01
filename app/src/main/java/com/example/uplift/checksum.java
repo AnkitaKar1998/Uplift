@@ -31,7 +31,7 @@ public class checksum extends AppCompatActivity implements PaytmPaymentTransacti
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         Intent intent = getIntent();
-        pid = intent.getExtras().getString("pid");
+        pid = intent.getExtras().getString("projectId");
         cid = intent.getExtras().getString("custid");
         amount = intent.getExtras().getString("amount");
 

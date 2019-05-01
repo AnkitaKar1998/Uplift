@@ -93,7 +93,7 @@ public class NgoFragment extends Fragment {
 
         clickListner=new CustomRecyclerViewAdaptar.ClickListner() {
             @Override
-            public void onPostClick(String pId) {
+            public void onPostClick(String pId, String name) {
                 Intent intent=new Intent(context,PostActivity.class);
                 intent.putExtra("P_id",pId);
                 startActivity(intent);
@@ -154,7 +154,7 @@ public class NgoFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot data : dataSnapshot.getChildren()) {
-                    String projectId = data.child("pid").getValue(String.class);
+                    String projectId = data.child("projectId").getValue(String.class);
                     String projectName = data.child("name").getValue(String.class);
                     ModelForPostListItem modelForPostListItem = new ModelForPostListItem();
                     modelForPostListItem.setPostId(projectId);

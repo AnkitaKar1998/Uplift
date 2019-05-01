@@ -99,8 +99,9 @@ public class PrivateFragment extends Fragment {
 
         clickListner=new CustomRecyclerViewAdaptar.ClickListner() {
             @Override
-            public void onPostClick(String pId) {
+            public void onPostClick(String pId, String name) {
                 Intent intent=new Intent(context,PostActivity.class);
+                Log.d("urmi", "private pid: "+pId);
                 intent.putExtra("P_id",pId);
                 startActivity(intent);
             }

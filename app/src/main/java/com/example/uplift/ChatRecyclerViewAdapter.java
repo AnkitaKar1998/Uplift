@@ -1,46 +1,46 @@
 package com.example.uplift;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
-public class CustomRecyclerViewAdaptar extends RecyclerView.Adapter<CustomRecyclerViewAdaptar.SimpleViewHolder> {
+public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerViewAdapter.SimpleViewHolder> {
+
     ArrayList<ModelForPostListItem> postListItems=new ArrayList<>();
-    ClickListner clickListner;
+    ChatRecyclerViewAdapter.ClickListner clickListner;
     Context context;
 
-    public CustomRecyclerViewAdaptar(ArrayList<ModelForPostListItem> postListItems, ClickListner clickListner, Context context) {
+    public ChatRecyclerViewAdapter(ArrayList<ModelForPostListItem> postListItems, ChatRecyclerViewAdapter.ClickListner clickListner, Context context) {
         this.postListItems = postListItems;
         this.clickListner = clickListner;
         this.context = context;
     }
 
+
     interface ClickListner{
-        public void onPostClick(String pId, String name);
+        public void onPostClick(String uId, String name);
     }
 
+
+    @NonNull
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_design,parent,false);
-        return new SimpleViewHolder(view);
+        return new ChatRecyclerViewAdapter.SimpleViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(SimpleViewHolder holder, int position) {
-        holder.name.setText(postListItems.get(position).getPostName());
-//        Glide.with(context).load(postListItems.get(position).getImageURL()).into(holder.image);
-        //Log.d("msg","image url="+postListItems.get(position).getImageURL());
-//        Picasso.get().load("http://192.168.43.165/"+postListItems.get(position).getImageURL()).into(holder.image);
+    public void onBindViewHolder(@NonNull SimpleViewHolder simpleViewHolder, int i) {
+        simpleViewHolder.name.setText(postListItems.get(i).getPostName());
     }
+
 
     @Override
     public int getItemCount() {
@@ -50,7 +50,7 @@ public class CustomRecyclerViewAdaptar extends RecyclerView.Adapter<CustomRecycl
     public class SimpleViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
-//        ImageView image;
+        //        ImageView image;
         LinearLayout postLayout;
 
         public SimpleViewHolder(View itemView) {
@@ -68,5 +68,5 @@ public class CustomRecyclerViewAdaptar extends RecyclerView.Adapter<CustomRecycl
 
         }
     }
-}
 
+}

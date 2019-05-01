@@ -63,17 +63,6 @@ public class ChatActivity extends AppCompatActivity {
                 String msgId=mDatabase.push().getKey();
                 mDatabase.child("users").child(projectUserId).child("chat").child(projectId).child(currentUserId).child(msgId).child("id").setValue(currentUserId);
                 mDatabase.child("users").child(projectUserId).child("chat").child(projectId).child(currentUserId).child(msgId).child("msg").setValue(msg);
-
-//                if((currentUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1") && projectUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2"))
-//                        || (currentUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2") && projectUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1"))) {
-//                    String id=mDatabase.push().getKey();
-//                    mDatabase.child("chat").child("111").child(id).child("id").setValue(currentUserId);
-//                    mDatabase.child("chat").child("111").child(id).child("msg").setValue(msg);
-//                }
-//                String id=mDatabase.push().getKey();
-//                mDatabase.child("chat").child(projectUserId).child(id).setValue(msg);
-//                mDatabase.child("users").child(projectUserId).child("chat").child(currentUserId).child(id).setValue(msg);
-//                mDatabase.child("groups").child(Gname).child(currentChatID).setValue(modelForMessage);
                 final ScrollView scrollview = ((ScrollView) findViewById(R.id.scrollView));
                 scrollview.post(new Runnable() {
                     @Override
@@ -99,13 +88,15 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        Log.d("urmi", "cid "+currentUserId);
+        Log.d("urmi", "pid "+projectId);
+        Log.d("urmi", "puid "+projectUserId);
 
         mDatabase.child("users").child(projectUserId).child("chat").child(projectId).child(currentUserId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 chatSection.removeAllViews();
                 for(DataSnapshot data: dataSnapshot.getChildren()) {
-                    String id = data.child("id").getValue(String.class);
                     String msg = data.child("msg").getValue(String.class);
                     TextView textView = new TextView(ChatActivity.this);
                     textView.setText(msg);
@@ -126,46 +117,6 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-//        if((currentUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1") && projectUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2"))
-//                || (currentUserId.equals("zfo09k5uzNeoQyz1PYsNydCKH5b2") && projectUserId.equals("uJNEsWqIvmSlTXLLYtGksss6oHw1"))) {
-//            mDatabase.child("chat").child("111").addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    chatSection.removeAllViews();
-//                    for (DataSnapshot data: dataSnapshot.getChildren()){
-//                        String msg=data.child("msg").getValue(String.class);
-//                        TextView textView = new TextView(ChatActivity.this);
-//                        textView.setText(msg);
-//                        setDesign(textView);
-//                        chatSection.addView(textView);
-//                        final ScrollView scrollview = ((ScrollView) findViewById(R.id.scrollView));
-//                        scrollview.post(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                scrollview.fullScroll(ScrollView.FOCUS_DOWN);
-//                            }
-//                        });
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            });
-//        }
     }
 }
 

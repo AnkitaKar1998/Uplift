@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputLayout email, number, password,firstName, lastName, companyName, ngoName;
     Button register;
     RadioGroup type;
-    String inputType, inputName, inputFirstName, inputLastName, inputNgoName, inputCompanyName, inputEmail, inputNumber, inputPassword;
+    String inputType, inputName, inputFirstName, inputLastName, inputNgoName, inputCompanyName, inputEmail, inputNumber, inputPassword, inputKyc;
     ProgressDialog progressDialog;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users");
@@ -113,6 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
         inputNumber = number.getEditText().getText().toString();
         inputEmail = email.getEditText().getText().toString();
         inputPassword = password.getEditText().getText().toString();
+        inputKyc = "No";
 
         Log.d("urmi", "type: "+inputType);
         if(inputType.equals("Individual") && !inputFirstName.equals("") && !inputLastName.equals("")) {
@@ -138,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
                         //checking if success
                         if(task.isSuccessful()){
                             currentUserId = firebaseAuth.getCurrentUser().getUid();
-                            RegisterDataModel registerDataModel = new RegisterDataModel(inputName, inputType, inputNumber, inputEmail,inputPassword);
+                            RegisterDataModel registerDataModel = new RegisterDataModel(inputName, inputType, inputNumber, inputEmail,inputPassword, inputKyc);
                             databaseReference.child(currentUserId).setValue(registerDataModel);
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(intent);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,8 +33,10 @@ public class PostActivity extends AppCompatActivity {
     ArrayList<ModelForMilestone> milestones = new ArrayList<>();
     FirebaseAuth firebaseAuth;
 
-    String pid;
+    String projectId;
     String projectUserId;
+    String currentUserId;
+    ArrayList<String> chatNames = new ArrayList<>();
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("projects");
 
@@ -43,6 +46,7 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        currentUserId = firebaseAuth.getCurrentUser().getUid();
 
         context=this;
         pName=findViewById(R.id.pname_tv);
@@ -61,7 +65,8 @@ public class PostActivity extends AppCompatActivity {
         chat=findViewById(R.id.chat_iv);
 
         final Intent intent=getIntent();
-        pid=intent.getStringExtra("P_id");
+        projectId =intent.getStringExtra("P_id");
+        Log.d("urmi", "post pid: "+projectId);
 
 //        prev.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -93,7 +98,7 @@ public class PostActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String cid = firebaseAuth.getCurrentUser().getUid();
                 Intent intent1 = new Intent(PostActivity.this, DonateActivity.class);
-                intent1.putExtra("pid", pid);
+                intent1.putExtra("projectId", projectId);
                 intent1.putExtra("cid", cid);
                 startActivity(intent1);
             }
@@ -105,7 +110,7 @@ public class PostActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent2 = new Intent(PostActivity.this, ChatActivity.class);
                 intent2.putExtra("projectUid", projectUserId);
-                intent2.putExtra("projectId", pid);
+                intent2.putExtra("projectId", projectId);
                 startActivity(intent2);
             }
         });
@@ -117,7 +122,7 @@ public class PostActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Query query = databaseReference.orderByChild("pid").equalTo(pid);
+        Query query = databaseReference.orderByChild("pid").equalTo(projectId);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

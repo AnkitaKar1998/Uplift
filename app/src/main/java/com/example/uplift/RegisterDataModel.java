@@ -2,14 +2,15 @@ package com.example.uplift;
 
 public class RegisterDataModel {
 
-    String name, type, number, email, password;
+    String name, type, number, email, password, kyc;
 
-    public RegisterDataModel(String name, String type, String number, String email, String password) {
+    public RegisterDataModel(String name, String type, String number, String email, String password, String kyc) {
         this.name = name;
         this.type = type;
         this.number = number;
         this.email = email;
         this.password = password;
+        this.kyc = kyc;
     }
 
     public String getName() {
